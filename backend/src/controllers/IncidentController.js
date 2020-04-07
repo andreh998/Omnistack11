@@ -40,10 +40,10 @@ module.exports = {
       .where('id', id)
       .select('ong_id')
       .first();
-    
-      if(incident.ong_id != ong_id){
-        return res.status(401).json({ error: 'Operation not permited.'}); //status code 401 - não autorizado
-      }
+
+    if(incident.ong_id != ong_id){
+      return res.status(401).json({ error: 'Operation not permited.'}); //status code 401 - não autorizado
+    }
 
     await connection('incidents').where('id', id).delete();
 
